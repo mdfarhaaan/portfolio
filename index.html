@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@1,200&family=Playfair+Display:ital,wght@1,500&family=Poppins:wght@400;700&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: rgb(119, 7, 153);
+            color: white;
+            margin: 10px;
+            height: 100vh;
+
+
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgb(93, 5, 120);
+            height: 100px;
+
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            color: rgb(198, 138, 216);
+            font-size: 1.03rem;
+        }
+
+        main {
+            margin: 50px;
+        }
+
+        .left {
+            font-size: 2rem;
+        }
+
+        .firstsection {
+            display: flex;
+            justify-content: space-around;
+            margin: 23px 0;
+            align-items: center;
+        }
+
+        .leftsection {
+            background-color: rgb(93, 5, 120);
+            width: 40%;
+            font-size: 3rem;
+        }
+
+        .rightsection {
+
+            width: 30%;
+        }
+
+        .rightsection img {
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+        }
+
+        .purple {
+            color: rgb(198, 138, 216);
+        }
+
+        #element {
+            color: rgb(198, 138, 216);
+        }
+
+        main hr {
+            margin: 15px;
+
+        }
+
+        .secondsection {
+            padding-left: 100px;
+        }
+
+        .secondsection h1 {
+            text-align: justify;
+            font-size: 2rem;
+            font-weight: normal;
+            padding: left 20px;
+
+        }
+
+        .secondsection h5 {
+            text-align: justify;
+            font-weight: normal;
+            padding: left 20px;
+        }
+
+        .box {
+            margin-top: 50px;
+            height: 1.5px;
+            background-color: white;
+            width: 910px;
+            display: flex;
+        }
+
+        .secondsection .vertical {
+            margin-right: 180px;
+            width: 2px;
+            height: 80px;
+            background-color: white;
+        }
+
+        footer {
+            background-color: rgb(93, 5, 120);
+            height: 200px;
+            margin-top: 200px;
+            padding: 20px;
+            text-align: center;
+        }
+
+
+        .vertical-title {
+            position: relative;
+            top: 50px;
+            font-size: larger;
+            left: -10px;
+        }
+
+        .imagetop {
+            height: 30px;
+            width: 30px;
+            position: relative;
+            top: -30px;
+            left: -15px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .student-info,
+        .contact-info,
+        .copyright,
+        .back-to-top {
+            flex: 1 1 100%;
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: whitesmoke;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            color: white;
+            background-color: rgb(93, 5, 120);
+            padding: 7px;
+
+            border-color: white;
+
+        }
+
+        #popup-about,
+        #popup-service,
+        #popup-projects,
+        #popup-contact {
+            border: 2px solid rgb(66, 14, 81);
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: rgb(109, 5, 141);
+            
+            box-shadow: 0 0 10px rgba(48, 47, 47, 0.5);
+            z-index: 1000;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            backdrop-filter: blur(5px)
+        }
+
+        .popup-btn {
+            color: white;
+            background-color: rgb(93, 5, 120);
+            padding: 7px;
+            border-color: white;
+            cursor: pointer;
+        }
+
+        .closebtn {
+            border: 1px solid white;
+            background-color: rgb(93, 5, 120);
+            color: white;
+            padding: 5px;
+            margin-top: 30px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <nav>
+            <div class="left">
+                MOHAMMED FARHAAN
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#" class="popup-btn" onclick="showPopup('about')">About</a></li>
+                    <li><a href="#" class="popup-btn" onclick="showPopup('service')">Service</a></li>
+                    <li><a href="#" class="popup-btn" onclick="showPopup('projects')">Projects</a></li>
+                    <li><a href="#" class="popup-btn" onclick="showPopup('contact')">Contact me</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- About Popup content -->
+        <div id="popup-about">
+            <img src="my image.jpg" alt="image" style="height: 100px; width: 100px; display: block; margin: auto;border: 1px solid rgb(66, 14, 81) ;">
+            <h3 style="margin: 10px;">Objective</h3>
+            <p>Driven and self-motivated professional seeking an entry-level position where I can contribute my strong
+                problem solving skills, collaborate with a dynamic team, and leverage my motivation to make valuable
+                contributions. With
+                a solid foundation in my skills, I am eager to apply my determination and enthusiasm to contribute to
+                the success
+                of an innovative organization. I am enthusiastic about learning new technologies and methodologies, and
+                I am
+                committed to growing within a collaborative work environment. My goal is to not only meet but exceed
+                expectations, making a positive impact on both the team and the overall success of the company.</p>
+            <h3 style="margin: 10px;">education</h3>
+            <p> St. Martin's Engineering College <br>
+                BTech-2020-2024 <br>
+                70% <br>
+                Narayana Junior College <br>
+                Intermediate-2018-2020 <br>
+                91% <br>
+                Gowtham Vidhyalaya High School <br>
+                High School-2018 <br>
+                90%</p>
+            <button class="closebtn" onclick="hidePopup('about')">Close</button>
+        </div>
+
+        <!-- Service Popup content -->
+        <div id="popup-service">
+            <p>This is the Service Popup!</p>
+            <button class="closebtn" onclick="hidePopup('service')">Close</button>
+        </div>
+
+        <!-- Projects Popup content -->
+        <div id="popup-projects">
+            <h3 style="margin: 10px;">&#8226;Elevating Agriculture : Advanced hops classification for precision crop management and quality harvests
+            </h3>
+            <p>This project is a pioneering venture at the intersection of agriculture and cutting-edge machine learning. Leveraging state-of-the-art techniques in computer vision and data analysis, this initiative aims to revolutionize hop farming. The project seeks to enhance the precision and sustainability of hop cultivation, promoting a more economically viable and ecologically responsible future for specialty crop farming.
+            </p>
+            <h3 style="margin: 10px;">&#8226; Machine learning model's for prediction and forecasting of CO2 emission with EDA.</h3>
+            <p>Machine learning can be a valuable tool for predicting and
+                forecasting CO2 emissions. By analyzing historical data and
+                identifying patterns and trends, machine learning algorithms can
+                make accurate predictions about future emissions levels.</p>
+            <h3 style="margin: 10px;">&#8226;Personal portfolio</h3>
+            <p>Developed and designed a personal portfolio website to showcase my skills, projects, and professional
+                experience. The website features a clean and modern design, responsive layout, and interactive elements.
+            </p>
+            <button class="closebtn" onclick="hidePopup('projects')">Close</button>
+        </div>
+
+        <!-- Contact Popup content -->
+        <div id="popup-contact">
+            <p>Email: <a href="mailto:mfarhaan569@gmail.com">mfarhaan569@gmail.com</a></p>
+            <p>Call me at:<a href="tel:+917013455047"> 7013455047</a>
+            </p>
+            <p>Visit me at:<a href="https://maps.google.com/maps?q=17.4522972,78.4495648">7-2-49/5/50, DNM Colony,
+                    Sanathanagar, Hyderabad-500018</a>
+
+            </p>
+            <button class="closebtn" onclick="hidePopup('contact')">Close</button>
+        </div>
+
+        <!-- Overlay background -->
+        <div id="overlay"></div>
+
+    </header>
+
+    <main>
+        <section class="firstsection">
+            <div class="leftsection">
+                Hi my name is <span class="purple"> MOHAMMED FARHAAN </span>
+                <div>and i'm a passionate </div>
+                <span id="element"></span>
+                <div class="button">
+                    <a href="myresume.pdf" download="myresume.pdf"><button class="btn">Download Resume</button></a>
+                    <a href=""><button class="btn">Visit GitHub</button></a>
+                </div>
+            </div>
+            <div class="rightsection">
+                <img src="1.webp" alt="image">
+            </div>
+        </section>
+        <hr>
+
+        <section class="secondsection">
+            <h5>what I have learned</h5>
+            <h1>My Skills</h1>
+            <div class="table">
+                <div class="box">
+                    <div class="vertical">
+                        <img class="imagetop" src="th (1).jpeg" alt="image">
+                        <div class="vertical-title">HTML</div>
+
+                    </div>
+                    <div class="vertical">
+                        <img class="imagetop" src="th (2).jpeg" alt="image">
+                        <div class="vertical-title">CSS</div>
+                    </div>
+                    <div class="vertical">
+                        <img class="imagetop" src="th (3).jpeg" alt="image">
+                        <div class="vertical-title">JAVASCRIPT</div>
+                    </div>
+                    <div class="vertical">
+                        <img class="imagetop" src="th (4).jpeg" alt="image">
+                        <div class="vertical-title">REACT.JS</div>
+                    </div>
+                    <div class="vertical">
+                        <img class="imagetop" src="th (5).jpeg" alt="image">
+                        <div class="vertical-title">PYTHON</div>
+                    </div>
+                    <div class="vertical"><img class="imagetop" src="th (7).jpeg" alt="image">
+                        <div class="vertical-title">JAVA</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="student-info">
+                <p>Information Technology student</p>
+                <p>St. Martin's Engineering College</p>
+                <p>Expected Graduation: May 2024</p>
+            </div>
+            <div class="contact-info">
+                <p>Email: mfarhaan569@gmail.com</p>
+
+            </div>
+            <div class="copyright">
+                <p>© Mammed Farhaan 2024. All Rights Reserved.</p>
+            </div>
+            <div class="back-to-top">
+                <a href="#top">Back to Top</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['Web Developer', 'Software Engineer', 'Data Analyst'],
+            typeSpeed: 50,
+            loop: true
+        });
+
+        // Function to show the popup
+        function showPopup(popupId) {
+            document.getElementById(`popup-${popupId}`).style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        // Function to hide the popup
+        function hidePopup(popupId) {
+            document.getElementById(`popup-${popupId}`).style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
